@@ -37,6 +37,7 @@ pg_dump "$BACKUP_DATABASE_URL" \
 
 docker run --rm \
     --network "$NETWORK" \
+    --add-host=host.docker.internal:172.19.0.1 \
     --env-file "$ENV_FILE" \
     -v "$DUMP:/backup.sql.gz:ro" \
     "$IMAGE" \
