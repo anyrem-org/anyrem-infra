@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# 03:00 UTC
+0 3 * * * /usr/local/bin/anyrem-db-backup.sh >> /var/log/anyrem-db-backup.log 2>&1
