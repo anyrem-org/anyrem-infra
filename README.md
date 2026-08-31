@@ -26,9 +26,19 @@ Không commit `keycloak.env` hoặc bất kỳ file nào chứa secret.
 
 ## Backup
 
-`backup/` là nơi lưu script và lịch backup production. Database production chạy native trên host; script DB dùng `pg_dump`, nén kết quả rồi upload qua image backend tới object storage.
+`backup/` chứa script shell, cron và installer cho backup production (Postgres + uploads volume). Upload lên object storage do `anyrem-be` thực hiện qua `dist/backup/backup.script.js`.
 
-Các script backup uploads, cron uploads và installer hiện mới là placeholder, nên chưa có backup uploads hoàn chỉnh. Không bật chúng ở production cho đến khi phần này được hoàn thiện và restore test thành công.
+- Feature specification: `specs/features/013-backup/spec.md`
+- Hướng dẫn vận hành: [backup/README.md](backup/README.md)
+
+```bash
+cd backup/scripts
+sudo ./install-backup.sh
+sudo /usr/local/bin/anyrem-db-backup.sh
+sudo /usr/local/bin/anyrem-uploads-backup.sh
+```
+
+Trước khi bật cron production: deploy image backend mới nhất, chạy thử manual và restore drill (xem `backup/README.md`).
 
 ## Vận hành
 

@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+15 9 * * * root /usr/local/bin/anyrem-uploads-backup.sh >> /var/log/anyrem-uploads-backup.log 2>&1

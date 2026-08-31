@@ -41,7 +41,7 @@ docker run --rm \
     --env-file "$ENV_FILE" \
     -v "$DUMP:/backup.sql.gz:ro" \
     "$IMAGE" \
-    node dist/backup/backup-db.script.js \
+    node dist/backup/backup.script.js \
     --type db-daily \
     --file /backup.sql.gz
 
